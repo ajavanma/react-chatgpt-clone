@@ -1,9 +1,13 @@
+// import './index.css'
+
 const App = () => {
   return (
     <div className="app">
       <section className="side-bar">
         <button>+ New chat</button>
-        <ul className="history"></ul>
+        <ul className="history">
+          <li> Blugh</li>
+        </ul>
         <nav>
           <p>Made by Arash</p>
         </nav>
@@ -22,7 +26,6 @@ const App = () => {
           <p className="info">
             ChatGPT March 23 Version API.
           </p>
-
         </div>
       </section>
     </div>
