@@ -2,8 +2,10 @@ import { useState, useEffect } from 'react'
 
 const App = () => {
 
-  const [value, setValue] = useState(null)
-  const [messages, setMessages] = useState(null)
+  const [value, setValue] = useState('')
+  const [message, setMessages] = useState('')
+  const [previousChats, setPreviousChats] = useState([])
+  const [currentTitle, setCurrentTitel] = useState([])
 
   const getMessages = async () => {
     const options = {
@@ -26,7 +28,10 @@ const App = () => {
     }
   }
 
-  console.log(value)
+  useEffect(() => {
+    console.log(currentTitle, value, message)
+
+  }, [message, currentTitle])
 
   return (
     <div className="app">
