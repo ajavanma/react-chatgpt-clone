@@ -1,3 +1,5 @@
+import { useState, useEffect } from 'react'
+
 const App = () => {
 
   const getMessages = async () => {
@@ -6,12 +8,12 @@ const App = () => {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JASON.stringify({
+      body: JSON.stringify({
         message: "string for now"
       })
     }
 
-    try{
+    try {
       const response = await fetch('http://localhost:8000/completions', options)
       const data = await response.json()
       console.log(data)
@@ -20,7 +22,6 @@ const App = () => {
       console.error(err)
     }
   }
-
 
   return (
     <div className="app">
