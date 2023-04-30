@@ -18,8 +18,10 @@ const App = () => {
           <div className="input-container">
             <input/>
             <div id="submit">➢</div>
-
           </div>
+          <p className="info">
+            ChatGPT March 23 Version API.
+          </p>
 
         </div>
       </section>
