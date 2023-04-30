@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react'
 
 const App = () => {
 
-  const [messages, setMessages] = useState([])
+  const [value, setValue] = useState(null)
+  const [messages, setMessages] = useState(null)
 
   const getMessages = async () => {
     const options = {
@@ -18,13 +19,14 @@ const App = () => {
     try {
       const response = await fetch('http://localhost:8000/completions', options)
       const data = await response.json()
-      console.log(data)
       setMessages(data.choices[0].message)
 
     } catch(err) {
       console.error(err)
     }
   }
+
+  console.log(value)
 
   return (
     <div className="app">
@@ -45,7 +47,7 @@ const App = () => {
         </ul>
         <div className="bottom-section">
           <div className="input-container">
-            <input/>
+            <input value={value} onChange={(e) => setValue(e.target.value)}/>
             <div id="submit" onClick={getMessages}>➢</div>
           </div>
           <p className="info">
