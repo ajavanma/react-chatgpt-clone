@@ -86,7 +86,7 @@ const App = () => {
         <ul className='feed'>
           {currentChat?.map((chatMessage, index) => <li key={index}>
             <p className="role">{chatMessage.role}</p>
-            <p>{chatMessage.message}</p>
+            <p>{chatMessage.content}</p>
           </li>)}
         </ul>
         <div className="bottom-section">
