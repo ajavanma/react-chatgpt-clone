@@ -13,6 +13,12 @@ const App = () => {
     setCurrentTitle(null)
   }
 
+  const handleClick = (uniqueTitle) => {
+    setCurrentTitle(uniqueTitle)
+    setMessage(null)
+    setValue("")
+  }
+
   const getMessages = async () => {
     const options = {
       method: 'POST',
@@ -68,7 +74,7 @@ const App = () => {
       <section className="side-bar">
         <button onClick={createNewChat}>+ New chat</button>
         <ul className="history">
-          {uniqueTitles?.map((uniqueTitle, index) => <li key={index}>{uniqueTitle}</li>)}
+          {uniqueTitles?.map((uniqueTitle, index) => <li key={index} onClick={() => {handleClick(uniqueTitle)}}>{uniqueTitle}</li>)}
         </ul>
         <nav>
           <p>Made by Arash</p>
