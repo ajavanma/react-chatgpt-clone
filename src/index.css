@@ -132,3 +132,13 @@ input:focus {
   padding: 20px;
   margin: 20px 0;
 }
+
+.feed p {
+  color:rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+  text-align: left;
+}
+
+.feed p.role {
+  min-width: 100px;
+}
