@@ -118,3 +118,17 @@ input:focus {
   right: 0;
   cursor: pointer;
 }
+
+.feed {
+  overflow-y: scroll;
+  width: 100%;
+  padding: 0;
+}
+
+.feed li {
+  display: flex;
+  background-color: #444654;
+  width: 100%;
+  padding: 20px;
+  margin: 20px 0;
+}
