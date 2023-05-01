@@ -2,10 +2,16 @@ import { useState, useEffect } from 'react'
 
 const App = () => {
 
-  const [value, setValue] = useState('')
-  const [message, setMessages] = useState('')
+  const [value, setValue] = useState(null)
+  const [message, setMessage] = useState(null)
   const [previousChats, setPreviousChats] = useState([])
-  const [currentTitle, setCurrentTitle] = useState([])
+  const [currentTitle, setCurrentTitle] = useState(null)
+
+  const createNewChat = () => {
+    setMessage(null)
+    setValue("")
+    setCurrentTitle(null)
+  }
 
   const getMessages = async () => {
     const options = {
@@ -21,7 +27,7 @@ const App = () => {
     try {
       const response = await fetch('http://localhost:8000/completions', options)
       const data = await response.json()
-      setMessages(data.choices[0].message)
+      setMessage(data.choices[0].message)
 
     } catch(err) {
       console.error(err)
@@ -52,10 +58,13 @@ const App = () => {
     }
   }, [message, currentTitle])
 
+  console.log(previousChats)
+  const currentChat = previousChats.filter(previousChat => previousChat.title === currentTitle )
+
   return (
     <div className="app">
       <section className="side-bar">
-        <button>+ New chat</button>
+        <button onClick={createNewChat}>+ New chat</button>
         <ul className="history">
           <li> Blugh</li>
         </ul>
@@ -65,9 +74,12 @@ const App = () => {
       </section>
 
       <section className="main">
-        <h1>ArashGPT</h1>
+        {!currentTitle && <h1>ArashGPT</h1>}
         <ul className='feed'>
-
+          {currentChat?.map((chatMessage, index) => <li key={index}>
+            <p className="role">{chatMessage.role}</p>
+            <p>{chatMessage.message}</p>
+          </li>)}
         </ul>
         <div className="bottom-section">
           <div className="input-container">
