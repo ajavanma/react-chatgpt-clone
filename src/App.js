@@ -60,6 +60,7 @@ const App = () => {
 
   console.log(previousChats)
   const currentChat = previousChats.filter(previousChat => previousChat.title === currentTitle )
+  const uniqueTitle = Array.from(new Set(previousChats.map(previousChat => previousChat.title)))
 
   return (
     <div className="app">
